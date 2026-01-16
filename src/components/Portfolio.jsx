@@ -6,6 +6,9 @@ import { FaFacebook } from "react-icons/fa";
 import { FaBehance } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
+import pdfcv from '../assets/rajanmishracv.pdf';
+import CvPdfViewer from './CvPdfViewer';
+
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -434,6 +437,12 @@ const handleSubmit = (e) => {
             </motion.div>
           </div>
         </div>
+      </section>
+
+
+    
+      <section className="min-h-screen bg-[#1b1936] p-6">
+        <CvPdfViewer src={pdfcv} height='85vh' />
       </section>
 
       {/* Contact Section */}
