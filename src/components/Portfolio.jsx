@@ -442,7 +442,7 @@ const handleSubmit = (e) => {
 
     
       <section className="min-h-screen bg-[#1b1936] p-6">
-        <CvPdfViewer src={pdfcv} height='85vh' />
+        <CvPdfViewer src={pdfcv} height='65vh' />
       </section>
 
       {/* Contact Section */}

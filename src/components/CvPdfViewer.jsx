@@ -38,7 +38,7 @@ export default function CvPdfViewer({
       </div>
 
       {/* A4 frame */}
-      <div className="relative aspect-[210/297] overflow-hidden rounded-[30px]">
+      <div className="relative aspect-[210/250] overflow-hidden rounded-[30px]">
         {/* Outer gradient rim */}
         <div
           className="absolute inset-0 bg-gradient-to-br from-[#1b1936] via-[#2d194e] to-[#551785]"
