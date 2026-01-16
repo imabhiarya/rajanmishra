@@ -85,13 +85,14 @@ const Portfolio = () => {
       category: 'entertainment',
       utl: 'https://ebclearning.com/courses/ram-jethmalani-law-resilience-justice-online-talk/'
     },
-    
+
   ];
 
-    const form = useRef();
+  const form = useRef();
   const [formData, setFormData] = useState({
     from_name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -102,20 +103,20 @@ const Portfolio = () => {
     }));
   }
 
-// submit handler
-const handleSubmit = (e) => {
+  // submit handler
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     emailjs.sendForm(
-        "service_u9hkd7q",   // from EmailJS
-        "template_u91pk9k",  // from EmailJS
-        form.current,
-        "7MeEUX8_0wQOpJx-h"    // from EmailJS
-      )
+      "service_u9hkd7q",   // from EmailJS
+      "template_u91pk9k",  // from EmailJS
+      form.current,
+      "7MeEUX8_0wQOpJx-h"    // from EmailJS
+    )
       .then(
         () => {
           alert("✅ Message sent successfully!");
-          setFormData({ from_name: "", email: "", message: "" });
+          setFormData({ from_name: "", email: "", phone: "", message: "" });
           // e.target.reset(); // clear form
         },
         (error) => {
@@ -125,27 +126,27 @@ const handleSubmit = (e) => {
       );
 
 
-    }
+  }
 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white overflow-x-hidden">
       {/* Navigation */}
-      <motion.nav 
+      <motion.nav
         className={`fixed w-full z-50 transition-all duration-300 px-4 md:px-8 ${isScrolled ? 'py-3 bg-gray-900/90 backdrop-blur-md shadow-lg' : 'py-5'}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <motion.div 
+          <motion.div
             className="text-2xl font-bold flex items-center"
             whileHover={{ scale: 1.05 }}
           >
             <span className="text-red-500">Rajan</span>Mishra
             <span className="ml-2 text-red-500 text-xl">🎬</span>
           </motion.div>
-          
+
           <div className="hidden md:flex space-x-6 lg:space-x-8">
             {['home', 'work', 'about', 'skills', 'contact'].map((item) => (
               <a
@@ -159,8 +160,8 @@ const handleSubmit = (e) => {
               </a>
             ))}
           </div>
-          
-          <button 
+
+          <button
             className="md:hidden flex flex-col space-y-1.5 z-50 relative"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
@@ -170,11 +171,11 @@ const handleSubmit = (e) => {
             <span className={`w-6 h-0.5 bg-white transition-transform ${isMenuOpen ? 'transform -rotate-45 -translate-y-2' : ''}`}></span>
           </button>
         </div>
-        
+
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               className="md:hidden absolute top-0 left-0 w-full h-screen bg-gray-900/95 backdrop-blur-md pt-20"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -203,11 +204,11 @@ const handleSubmit = (e) => {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center relative overflow-hidden pt-20 px-4 md:px-8">
         <div className="absolute inset-0 bg-black/40 z-0"></div>
-        
+
         {/* Animated background elements */}
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-600 rounded-full filter blur-3xl opacity-20 animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500 rounded-full filter blur-3xl opacity-20 animate-pulse-slow" style={{animationDelay: '1s'}}></div>
-        
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500 rounded-full filter blur-3xl opacity-20 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+
         <div className="max-w-7xl mx-auto relative z-10 py-16 md:py-24">
           <motion.div
             className="max-w-4xl"
@@ -222,17 +223,17 @@ const handleSubmit = (e) => {
               Creating <span className="text-red-500">Visual Stories</span> That Captivate & Engage
             </motion.h1>
             <motion.p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-10 max-w-3xl" variants={itemVariants}>
-              9+ years of expertise in end-to-end video production, editing, and motion graphics. 
+              9+ years of expertise in end-to-end video production, editing, and motion graphics.
               Transforming concepts into compelling visual narratives that resonate with audiences.
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4" variants={itemVariants}>
-              <button 
+              <button
                 className="px-6 py-3 bg-red-500 hover:bg-red-600 rounded-md font-medium transition-colors flex items-center justify-center"
                 onClick={() => setActiveTab('work')}
               >
                 <span className="mr-2">🎥</span> View My Work
               </button>
-              <button 
+              <button
                 className="px-6 py-3 border border-gray-600 hover:border-red-500 rounded-md font-medium transition-colors flex items-center justify-center"
                 onClick={() => setActiveTab('contact')}
               >
@@ -241,7 +242,7 @@ const handleSubmit = (e) => {
             </motion.div>
           </motion.div>
         </div>
-        
+
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400 z-10">
           <span className="text-sm mb-2">Scroll Down</span>
           <div className="w-px h-10 bg-gray-400 relative">
@@ -250,14 +251,14 @@ const handleSubmit = (e) => {
         </div>
       </section>
 
-<section>
-    <VideoShowcase />
-</section>
+      <section>
+        <VideoShowcase />
+      </section>
 
       {/* Work/Projects Section */}
       <section id="work" className="py-16 md:py-24 px-4 md:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -266,7 +267,7 @@ const handleSubmit = (e) => {
           >
             Featured <span className="text-red-500">Projects</span>
           </motion.h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projects.map((project, index) => (
               <motion.div
@@ -308,7 +309,7 @@ const handleSubmit = (e) => {
       <section id="about" className="py-16 md:py-24 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-            <motion.div 
+            <motion.div
               className="lg:w-2/3"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -317,17 +318,17 @@ const handleSubmit = (e) => {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8">About <span className="text-red-500">Me</span></h2>
               <p className="text-lg text-gray-300 mb-6">
-                Creative and detail-oriented video specialist with end-to-end expertise in digital content creation. 
-                With over 9 years of experience, I specialize in pre-production planning, on-set coordination, shooting, 
+                Creative and detail-oriented video specialist with end-to-end expertise in digital content creation.
+                With over 9 years of experience, I specialize in pre-production planning, on-set coordination, shooting,
                 and advanced post-production techniques that ensure impactful visual storytelling.
               </p>
               <p className="text-lg text-gray-300 mb-10">
-                My proven ability to collaborate with cross-functional teams has resulted in compelling content for 
-                marketing, branding, and educational purposes. I'm expert in motion graphics, color grading, 
-                audio mixing, and visual effects, and adept at managing multiple projects under tight deadlines 
+                My proven ability to collaborate with cross-functional teams has resulted in compelling content for
+                marketing, branding, and educational purposes. I'm expert in motion graphics, color grading,
+                audio mixing, and visual effects, and adept at managing multiple projects under tight deadlines
                 while maintaining high production quality.
               </p>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 <div className="text-center p-4 bg-gray-800/50 rounded-lg">
                   <span className="block text-3xl md:text-4xl font-bold text-red-500">9+</span>
@@ -343,8 +344,8 @@ const handleSubmit = (e) => {
                 </div>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="lg:w-1/3 flex justify-center"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -370,7 +371,7 @@ const handleSubmit = (e) => {
       {/* Skills Section */}
       <section id="skills" className="py-16 md:py-24 px-4 md:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -379,7 +380,7 @@ const handleSubmit = (e) => {
           >
             Technical <span className="text-red-500">Expertise</span>
           </motion.h2>
-          
+
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
             <div className="lg:w-2/3 space-y-6 md:space-y-8">
               {skills.map((skill, index) => (
@@ -399,7 +400,7 @@ const handleSubmit = (e) => {
                     <span className="text-red-500 font-bold">{skill.level}%</span>
                   </div>
                   <div className="h-2.5 bg-gray-700 rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-gradient-to-r from-purple-500 to-red-500 rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
@@ -410,8 +411,8 @@ const handleSubmit = (e) => {
                 </motion.div>
               ))}
             </div>
-            
-            <motion.div 
+
+            <motion.div
               className="lg:w-1/3 flex justify-center items-start"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -440,7 +441,7 @@ const handleSubmit = (e) => {
       </section>
 
 
-    
+
       <section className="min-h-screen bg-[#1b1936] p-6">
         <CvPdfViewer src={pdfcv} height='65vh' />
       </section>
@@ -448,7 +449,7 @@ const handleSubmit = (e) => {
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-24 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -457,9 +458,9 @@ const handleSubmit = (e) => {
           >
             Get In <span className="text-red-500">Touch</span>
           </motion.h2>
-          
+
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-            <motion.div 
+            <motion.div
               className="lg:w-1/2"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -468,10 +469,10 @@ const handleSubmit = (e) => {
             >
               <h3 className="text-2xl font-bold mb-6">Let's create something amazing together</h3>
               <p className="text-gray-400 mb-10 text-lg">
-                I'm always interested in new challenges and opportunities to bring 
+                I'm always interested in new challenges and opportunities to bring
                 creative visions to life through video.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start bg-gray-800/30 p-4 rounded-xl border border-gray-700">
                   <div className="bg-red-500 p-3 rounded-md mr-4">
@@ -482,7 +483,7 @@ const handleSubmit = (e) => {
                     <a href="mailto:mishrarajan542@gmail.com" className="text-lg hover:text-red-500 transition-colors">mishrarajan542@gmail.com</a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start bg-gray-800/30 p-4 rounded-xl border border-gray-700">
                   <div className="bg-red-500 p-3 rounded-md mr-4">
                     <span className="text-xl">📞</span>
@@ -492,7 +493,7 @@ const handleSubmit = (e) => {
                     <a href="tel:+919140260273" className="text-lg hover:text-red-500 transition-colors">+91 9140260273</a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start bg-gray-800/30 p-4 rounded-xl border border-gray-700">
                   <div className="bg-red-500 p-3 rounded-md mr-4">
                     <span className="text-xl">📍</span>
@@ -503,7 +504,7 @@ const handleSubmit = (e) => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex space-x-4 mt-10">
                 <a href="https://www.facebook.com/rajan.mishra.77282" target="_blank" className="px-4 py-2 border border-gray-600 hover:border-red-500 rounded-md transition-colors flex items-center">
                   <span className="mr-2 border-1 rounded-full p-1"><FaFacebook /></span> Facebook
@@ -519,8 +520,8 @@ const handleSubmit = (e) => {
                 </a>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="lg:w-1/2"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -531,43 +532,57 @@ const handleSubmit = (e) => {
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div>
                     <label htmlFor="name" className="block text-gray-400 mb-2">Your Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="name"
                       placeholder="Enter your name"
                       className="w-full px-4 py-3 bg-gray-700/50 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 border border-gray-600"
                       required
                       name="from_name"
-                value={formData.from_name}
-                onChange={changeHandler}
+                      value={formData.from_name}
+                      onChange={changeHandler}
                     />
                   </div>
                   <div>
+                    <label htmlFor="phone" className="block text-gray-400 mb-2">Mobile Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      placeholder="Enter your mobile number"
+                      className="w-full px-4 py-3 bg-gray-700/50 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 border border-gray-600"
+                      required
+                      name="phone"
+                      value={formData.phone}
+                      onChange={changeHandler}
+                    />
+                  </div>
+
+                  <div>
                     <label htmlFor="email" className="block text-gray-400 mb-2">Your Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       id="email"
                       placeholder="Enter your email"
                       className="w-full px-4 py-3 bg-gray-700/50 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 border border-gray-600"
                       required
                       name='email'
                       value={formData.email}
-                onChange={changeHandler}
+                      onChange={changeHandler}
                     />
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-gray-400 mb-2">Your Message</label>
-                    <textarea 
+                    <textarea
                       id="message"
                       placeholder="How can I help you?"
                       rows="5"
                       name="message"
                       className="w-full px-4 py-3 bg-gray-700/50 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 border border-gray-600"
-                      required  value={formData.message}
-                onChange={changeHandler}
+                      required value={formData.message}
+                      onChange={changeHandler}
                     ></textarea>
                   </div>
-                  <button 
+                  <button
                     type="submit" onClick={handleSubmit}
                     className="w-full px-6 py-3 bg-red-500 hover:bg-red-600 rounded-md font-medium transition-colors flex items-center justify-center"
                   >
